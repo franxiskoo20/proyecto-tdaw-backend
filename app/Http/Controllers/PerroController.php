@@ -43,6 +43,8 @@ class PerroController extends Controller
         }
     }
 
+    // TODO
+    // Mejorar validación
     public function update(Request $request, $id)
     {
         $request->validate([
