@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Interaccion extends Model
 {
     use HasFactory;
+    
+    protected $table = 'interacciones';
 
     protected $fillable = [
         'perro_interesado_id',
