@@ -12,7 +12,7 @@ class CreateInteraccionesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('perro_interesado_id');
             $table->unsignedBigInteger('perro_candidato_id');
-            $table->enum('preferencia', ['aceptado', 'rechazado']);
+            $table->enum('preferencia', ['A', 'R']);
             $table->timestamps();
 
             $table->foreign('perro_interesado_id')->references('id')->on('perros');

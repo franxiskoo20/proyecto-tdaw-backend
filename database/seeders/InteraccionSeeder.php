@@ -9,7 +9,7 @@ class InteraccionSeeder extends Seeder
 {
     public function run()
     {
-        // Crear 10 interacciones de prueba
-        Interaccion::factory(10)->create();
+        // Usar el factory para crear 20 interacciones de ejemplo
+        Interaccion::factory(20)->create();
     }
 }
