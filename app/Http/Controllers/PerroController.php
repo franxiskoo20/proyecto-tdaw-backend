@@ -87,10 +87,10 @@ class PerroController extends Controller
         $perrosCandidatos = Interaccion::where('perro_interesado_id', $perroInteresadoId)
             ->pluck('perro_candidato_id')
             ->toArray();
-        
+
         // Obtener detalles de los perros candidatos
         $detallesPerrosCandidatos = Perro::whereIn('id', $perrosCandidatos)->get();
-        
+
         return response()->json($detallesPerrosCandidatos);
     }
 }

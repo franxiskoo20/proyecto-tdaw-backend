@@ -13,6 +13,7 @@ class CreatePerrosTable extends Migration
             $table->string('nombre');
             $table->string('foto_url');
             $table->text('descripcion');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
