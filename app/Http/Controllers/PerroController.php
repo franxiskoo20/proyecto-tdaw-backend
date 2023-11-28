@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Perro;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
+use App\Http\Requests\PerroRequest;
 
 class PerroController extends Controller
 {
@@ -25,17 +26,11 @@ class PerroController extends Controller
         return response()->json($perro);
     }
 
-    public function store(Request $request)
+    public function store(PerroRequest $request)
     {
         try {
-            $request->validate([
-                'nombre' => 'required|string|max:255',
-                'foto_url' => 'required|url',
-                'descripcion' => 'nullable|string',
-            ]);
-    
             $perro = Perro::create($request->all());
-    
+
             return response()->json(['message' => 'Perro creado con éxito'], 200);
         } catch (ValidationException $e) {
             // Manejar errores de validación
@@ -43,29 +38,24 @@ class PerroController extends Controller
         }
     }
 
-    // TODO
-    // Mejorar validación
-    public function update(Request $request, $id)
+    public function update(PerroRequest $request, $id)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'foto_url' => 'required|url',
-            'descripcion' => 'nullable|string',
-        ]);
+        try {
+            $perro = Perro::find($id);
 
-        $perro = Perro::find($id);
+            if (!$perro) {
+                return response()->json(['message' => 'Perro no encontrado'], 404);
+            }
 
-        if (!$perro) {
-            return response()->json(['message' => 'Perro no encontrado'], 404);
+            $perro->update($request->all());
+
+            return response()->json(['message' => 'Perro actualizado'], 200);
+        } catch (ValidationException $e) {
+            // Manejar errores de validación
+            return response()->json(['error' => $e->validator->errors()], 422);
         }
-
-        $perro->update($request->all());
-
-        return response()->json(['message' => 'Perro actualizado'], 200);
     }
 
-    // TODO
-    // Cambiar por soft delete
     public function destroy($id)
     {
         $perro = Perro::find($id);
@@ -77,5 +67,16 @@ class PerroController extends Controller
         $perro->delete();
 
         return response()->json(['message' => 'Perro eliminado'], 200);
+    }
+
+    public function perroRandom()
+    {
+        $perro = Perro::inRandomOrder()->first(['id', 'nombre']);
+
+        if (!$perro) {
+            return response()->json(['message' => 'No hay perros disponibles'], 404);
+        }
+
+        return response()->json($perro);
     }
 }

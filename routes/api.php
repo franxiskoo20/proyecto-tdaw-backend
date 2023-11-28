@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'perros'], function () {
+    Route::get('/random', [PerroController::class, 'perroRandom']);
     Route::get('/getAll', [PerroController::class, 'index']);
     Route::get('/{id}', [PerroController::class, 'show']);
     Route::post('/create', [PerroController::class, 'store']);
