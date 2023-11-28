@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "891be81c-59dc-465b-8dad-f55f07575b7e",
+		"name": "Api de Perros",
+		"description": "API de Perros: Gestiona y accede a información sobre perros, incluyendo la obtención de perros aleatorios, candidatos para interacciones, preferencias de interacción y operaciones CRUD básicas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27868266",
+		"_collection_link": "https://www.postman.com/cryosat-physicist-83732799/workspace/taller-web/collection/27868266-891be81c-59dc-465b-8dad-f55f07575b7e?action=share&source=collection_link&creator=27868266"
+	},
+	"item": [
+		{
+			"name": "CRUD perros",
+			"item": [
+				{
+					"name": "Listar todos los Perros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/perros/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"perros",
+								""
+							]
+						},
+						"description": "Devuelve una lista de todos los perros registrados en la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un nuevo perro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Crear Nuevo perro\",\r\n    \"foto_url\": \"https://ejemplo.com/foto.jpg\",\r\n    \"descripcion\": \"Esta es una nueva descripción para el perro creado.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/perros/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"perros",
+								""
+							]
+						},
+						"description": "Permite añadir un nuevo perro a la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar Perro Específico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/perros/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"perros",
+								"2"
+							]
+						},
+						"description": "Muestra la información detallada de un perro específico."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Perro Específico",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo perro\",\r\n    \"foto_url\": \"https://ejemplo.com/foto.jpg\",\r\n    \"descripcion\": \"Esta es una nueva descripción para el perro.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/perros/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"perros",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Perro Específico",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/perros/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"perros",
+								"2"
+							]
+						},
+						"description": "Elimina el registro de un perro específico de la base de datos."
+					},
+					"response": []
+				}
+			],
+			"description": "Carpeta CRUD de Perros: Contiene todas las operaciones esenciales para la gestión de datos de perros, incluyendo la creación, lectura, actualización y eliminación de registros de perros en la base de datos."
+		},
+		{
+			"name": "Obtener un Perro Aleatorio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/perros/random",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perros",
+						"random"
+					]
+				},
+				"description": "Esta ruta devuelve un perro aleatorio de tu base de datos."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Perros Candidatos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/perros/candidatos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perros",
+						"candidatos",
+						"1"
+					]
+				},
+				"description": "Obtiene un perro candidato para la interacción, excluyendo el perro con el ID especificado."
+			},
+			"response": []
+		},
+		{
+			"name": "Guardar Preferencia de Interacción",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"perro_interesado_id\": 3,\r\n    \"perro_candidato_id\": 5,\r\n    \"preferencia\": \"A\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/perros/interacciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perros",
+						"interacciones"
+					]
+				},
+				"description": "Permite registrar una preferencia de interacción entre dos perros, como una \"reacción\" de un perro a otro."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener perros rechazados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/perros/7/rechazados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perros",
+						"7",
+						"rechazados"
+					]
+				},
+				"description": "Muestra una lista de perros que han sido rechazados por el perro con el ID especificado."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener perros aceptados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/perros/7/aceptados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perros",
+						"7",
+						"aceptados"
+					]
+				},
+				"description": "Muestra una lista de perros que han sido aceptados por el perro con el ID especificado."
+			},
+			"response": []
+		}
+	]
+}
