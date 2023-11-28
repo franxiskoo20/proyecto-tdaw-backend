@@ -6,6 +6,7 @@ use App\Models\Perro;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use App\Http\Requests\PerroRequest;
+use App\Models\Interaccion;
 
 class PerroController extends Controller
 {
@@ -78,5 +79,18 @@ class PerroController extends Controller
         }
 
         return response()->json($perro);
+    }
+
+    public function perrosCandidatos($perroInteresadoId)
+    {
+        // Obtener perros candidatos basados en la interacción aprobada
+        $perrosCandidatos = Interaccion::where('perro_interesado_id', $perroInteresadoId)
+            ->pluck('perro_candidato_id')
+            ->toArray();
+        
+        // Obtener detalles de los perros candidatos
+        $detallesPerrosCandidatos = Perro::whereIn('id', $perrosCandidatos)->get();
+        
+        return response()->json($detallesPerrosCandidatos);
     }
 }

@@ -26,4 +26,5 @@ Route::group(['prefix' => 'perros'], function () {
     Route::post('/create', [PerroController::class, 'store']);
     Route::post('/update/{id}', [PerroController::class, 'update']);
     Route::delete('/delete/{id}', [PerroController::class, 'destroy']);
+    Route::get('/candidatos/{perroInteresadoId}', [PerroController::class, 'perrosCandidatos']);
 });
