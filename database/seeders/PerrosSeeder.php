@@ -9,7 +9,7 @@ class PerrosSeeder extends Seeder
 {
     public function run()
     {
-        // Usar el factory para crear 10 perros de ejemplo
-        Perro::factory(10)->create();
+        // Usar el factory para crear 20 perros de ejemplo
+        Perro::factory(20)->create();
     }
 }

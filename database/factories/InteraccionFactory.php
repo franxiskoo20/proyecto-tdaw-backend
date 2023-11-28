@@ -11,10 +11,18 @@ class InteraccionFactory extends Factory
 
     public function definition()
     {
+        $perro_interesado_id = $this->faker->numberBetween(1, 20);
+        $perro_candidato_id = $this->faker->numberBetween(1, 20);
+    
+        // Asegurarse de que los IDs no sean iguales
+        while ($perro_interesado_id == $perro_candidato_id) {
+            $perro_candidato_id = $this->faker->numberBetween(1, 20);
+        }
+    
         return [
-            'perro_interesado_id' => $this->faker->numberBetween(1, 10), // Reemplaza con el rango correcto según tu modelo de datos
-            'perro_candidato_id' => $this->faker->numberBetween(1, 10), // Reemplaza con el rango correcto según tu modelo de datos
-            'preferencia' => $this->faker->randomElement(['aceptado', 'rechazado']),
+            'perro_interesado_id' => $perro_interesado_id,
+            'perro_candidato_id' => $perro_candidato_id,
+            'preferencia' => $this->faker->randomElement(['A', 'R']),
         ];
     }
 }
