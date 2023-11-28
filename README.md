@@ -18,3 +18,6 @@ Para instalar y configurar el Proyecto TDAW Backend:
 - Configura tu base de datos y ejecuta las migraciones con `php artisan migrate`.  
 - Carga los datos iniciales con `php artisan db:seed`.  
 - Inicia el servidor de desarrollo con `php artisan serve` y accede a la aplicación en `http://localhost:8000`.
+
+## Postman Colección  
+URL: `https://www.postman.com/cryosat-physicist-83732799/workspace/taller-web/collection/27868266-891be81c-59dc-465b-8dad-f55f07575b7e?action=share&creator=27868266`
